@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Box - 2472037</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        #box {
+            position: absolute;
+            width: 100PX;
+            height: 100px;
+            background-color: green;
+        }
+        .container {
+            position: relative;
+            margin-top: 50px;
+            width: 800px;
+            height: 600px;
+            border: 1px solid red;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box"></div>
+    </div>
+    
+
+    <script>
+        function move() {
+            maxLebar = 700;
+            maxTinggi = 500;
+            lebar = Math.floor(Math.random() * maxLebar);
+            tinggi = Math.floor(Math.random() * maxTinggi);
+
+            $("box").fadeOut(500, function() {
+                $(this).css({left : lebar + "px", top: tinggi + "px"}).fadeIn(500);
+            });
+            setTimeout(move, 2000);
+        }
+        $(document).ready(function() {
+            move();
+        });
+        </script>
+</body>
+</html>
