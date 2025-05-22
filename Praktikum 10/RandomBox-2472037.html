@@ -36,7 +36,7 @@
             lebar = Math.floor(Math.random() * maxLebar);
             tinggi = Math.floor(Math.random() * maxTinggi);
 
-            $("box").fadeOut(500, function() {
+            $("#box").fadeOut(500, function() {
                 $(this).css({left : lebar + "px", top: tinggi + "px"}).fadeIn(500);
             });
             setTimeout(move, 2000);

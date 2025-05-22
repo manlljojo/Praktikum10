@@ -1,77 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Follow Line - 2472037</title>
-    <script src="jquery.min.js"></script>
-    <style>
-        td {
-            padding: 25px 25px;
-        }
-        #grey:hover {
-            background-color: red;
-        }
-        #green:hover {
-            background-color: green;
-        }
-        #start:hover {
-            background-color: lightblue;
-        }
-        #finish:hover {
-            background-color: gold;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Follow Line - 2472037</title>
+  <script src="jquery.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 50px auto;
+    }
+
+    td {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .aman {
+      background-color: white;
+    }
+
+    .jebakan {
+      background-color: grey;
+    }
+
+    #start,
+    #finish {
+      height: 50px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .aman:hover {
+      background-color: green;
+    }
+
+    .jebakan:hover {
+      background-color: red;
+    }
+
+    #finish:hover {
+      background-color: gold;
+    }
+
+    #start:hover {
+      background-color: blue;
+    }
+  </style>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <td colspan="6"><h1 style="text-align: center;" id="finish">Finish</h1></td>
-        </tr>
-        <tr>
-            <td id="green"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-        </tr>
-        <tr>
-            <td id="green"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-        </tr>
-        <tr>
-            <td id="green"></td>
-            <td id="green"></td>
-            <td id="green"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-        </tr>
-        <tr>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td id="green"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-        </tr>
-        <tr>
-            <td bgcolor="grey" id="grey"></td>
-            <td bgcolor="grey" id="grey"></td>
-            <td id="green"></td>
-            <td id="green"></td>
-            <td id="green"></td>
-            <td id="green"></td>
-        </tr>
-        <tr>
-            <td colspan="6"><h1 style="text-align: center;" id="start">Start</h1></td>
-        </tr>
-    </table>
+  <table>
+    <tr>
+      <td colspan="6" id="finish">Finish</td>
+    </tr>
+    <tr>
+      <td class="aman"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+    </tr>
+    <tr>
+      <td class="aman"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+    </tr>
+    <tr>
+      <td class="aman"></td>
+      <td class="aman"></td>
+      <td class="aman"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+    </tr>
+    <tr>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="aman"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+    </tr>
+    <tr>
+      <td class="jebakan"></td>
+      <td class="jebakan"></td>
+      <td class="aman"></td>
+      <td class="aman"></td>
+      <td class="aman"></td>
+      <td class="aman"></td>
+    </tr>
+    <tr>
+      <td colspan="6" id="start">Start</td>
+    </tr>
+  </table>
+
+  <script>
+    let gameStarted = false;
+    let gameOver = false;
+
+    $("#start").hover(function () {
+      gameStarted = true;
+      gameOver = false;
+      console.log("Game started");
+    });
+
+    $(".aman").hover(function () {
+      if (!gameStarted || gameOver) return;
+    });
+
+    $("td:not(.aman):not(#start):not(#finish)").hover(function () {
+      if (gameStarted && !gameOver) {
+        alert("You Lose");
+        gameStarted = false;
+        gameOver = true;
+      }
+    });
+
+    $("#finish").hover(function () {
+      if (gameStarted && !gameOver) {
+        alert("Congrats");
+        gameStarted = false;
+        gameOver = true;
+      }
+    });
+  </script>
 </body>
 </html>
